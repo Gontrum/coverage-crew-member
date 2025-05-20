@@ -4,6 +4,7 @@ import path from 'path';
 import * as playwright from 'playwright';
 
 import { Actors } from '../../test';
+import {AnotherCoverageReporter} from "./crew/AnotherCoverageReporter";
 
 const timeouts = {
     cucumber: {
@@ -49,6 +50,7 @@ BeforeAll(async () => {
             } ],
             [ '@serenity-js/core:ArtifactArchiver', { outputDirectory: path.resolve(__dirname, '../../target/site/serenity') } ],
             [ '@serenity-js/serenity-bdd', { specDirectory: path.resolve(__dirname, '../../features') } ],
+            new AnotherCoverageReporter()
         ],
 
         cueTimeout: timeouts.serenity.cueTimeout,
